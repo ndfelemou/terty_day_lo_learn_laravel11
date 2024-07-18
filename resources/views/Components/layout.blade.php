@@ -4,7 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laravel 11 | {{ $titre }}</title>
+        <title> Laravel 11
+            @isset($titre)
+                | {{ $titre }}
+            @endisset
+        </title>
 
         {{-- Tailwindcss cdn link --}}
         <script src="https://cdn.tailwindcss.com"></script>
