@@ -12,13 +12,6 @@
 
         {{-- Tailwindcss cdn link --}}
         <script src="https://cdn.tailwindcss.com"></script>
-
-        {{-- Boot Watch CDN link --}}
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/flatly/bootstrap.min.css"
-            integrity="sha512-qoT4KwnRpAQ9uczPsw7GunsNmhRnYwSlE2KRCUPRQHSkDuLulCtDXuC2P/P6oqr3M5hoGagUG9pgHDPkD2zCDA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
-
-        {{-- Icon link --}}
     </head>
 
     <body class="h-full">
@@ -36,6 +29,7 @@
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                     <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
+                                    <x-nav-link href="/jobs/create" :active="request()->is('jobs/create')">Create New Job</x-nav-link>
                                     <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                                 </div>
                             </div>
