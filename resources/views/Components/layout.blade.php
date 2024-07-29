@@ -29,7 +29,6 @@
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                     <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
-                                    <x-nav-link href="/jobs/create" :active="request()->is('jobs/create')">Create New Job</x-nav-link>
                                     <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                                 </div>
                             </div>
@@ -135,8 +134,10 @@
             </nav>
 
             <header class="bg-white shadow">
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
                     <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+
+                    <x-button href="/jobs/create">Create a New Job</x-button>
                 </div>
             </header>
             <main>

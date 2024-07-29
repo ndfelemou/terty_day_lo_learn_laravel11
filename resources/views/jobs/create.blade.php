@@ -1,5 +1,5 @@
-<x-layout titre="Job">
-    <x-slot:heading>Single Job</x-slot:heading>
+<x-layout titre="New Job">
+    <x-slot:heading>Create New Job</x-slot:heading>
 
     <!--
   This example requires some changes to your config:
@@ -31,8 +31,11 @@
 
                                 <input type="text" name="title" id="title"
                                     class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="Mister FELEMOU">
+                                    placeholder="Mister FELEMOU" required>
                             </div>
+                            @error('title')
+                                <p class="text-xm mt-1 text-red-600 font-semibold">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -44,12 +47,24 @@
 
                                 <input type="text" name="salary" id="salary"
                                     class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="$50,000 Per Year">
+                                    placeholder="$50,000 Per Year" required>
                             </div>
+                            @error('salary')
+                                <p class="text-xm mt-1 text-red-600 font-semibold">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
                 </div>
+                {{-- <div class="mt-3">
+                    @if ($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-red-600 font-bold text-sm italic">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div> --}}
             </div>
 
         </div>
@@ -57,7 +72,7 @@
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Anuler</button>
             <button type="submit"
-                class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enregistrer</button>
+                class="rounded-md bg-gray-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">Enregistrer</button>
         </div>
     </form>
 
