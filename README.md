@@ -1,3 +1,116 @@
+<!--
+    On peut utiliser les methode suivantes
+    Route::get('/', 'home'); ou
+    Route::get('/jobs', 'jobs');
+    Route::view('/', 'home')
+
+    ===================
+    Sont utiliser por la methode Route::ressource('', controller, ['']);
+    // 'except' => ['edit', 'index', 'update', 'destroy', 'create', 'store', 'show']
+    // 'only' => ['edit', 'index', 'update', 'destroy', 'create']4
+
+    ==============
+    // Route::controller(JobController::class)->group(function () {
+//     Route::get('/jobs', 'index');
+//     Route::get('/jobs/create', 'create');
+//     Route::post('/jobs', 'store');
+//     Route::get('/jobs/{job}/edit', 'edit');
+//     Route::patch('/jobs/{job}', 'update');
+//     Route::delete('/jobs/{job}', 'destroy');
+//     Route::get('/jobs/{job}', 'show');
+// });
+
+-->
+
+<!-- Voici tous ce qu'on peut faire sur un pr -->
+
+<!-- public function index()
+    {
+        // $jobs = Job::with('employer')->get();
+        // $jobs = Job::all();
+        // $jobs = Job::with('employer')->paginate(1);
+        $jobs = Job::with('employer')->latest()->simplePaginate(4);
+        // $jobs = Job::with('employer')->cursorPaginate(1);
+        return view('jobs.index', [
+            'jobs' => $jobs,
+        ]);
+    }
+
+    public function create()
+    {
+        return view('jobs.create');
+    }
+
+    public function store()
+    {
+        // validation
+        request()->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'salary' => ['required'],
+        ]);
+
+        Job::create([
+            'title' => request('title'),
+            'salary' => request('salary'),
+            'employer_id' => 1
+        ]);
+
+        return redirect('/jobs');
+    }
+
+    public function show(Job $job)
+    {
+        return view('jobs.show', ['job' => $job]);
+    }
+
+    public function edit(Job $job)
+    {
+        return view('jobs.edit', ['job' => $job]);
+    }
+
+    public function update(Job $job)
+    {
+        // validation
+        request()->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'salary' => ['required'],
+        ]);
+
+        // authorize (On hold....)
+
+        // Update the job
+        // and persist
+        // $job = Job::findOrFail($job);
+
+        // $job->title = request('title');
+        // $job->salary = request('salary');
+        // $job->save();
+
+        $job->update([
+            'title' => request('title'),
+            'salary' => request('salary'),
+        ]);
+
+        // redirect to the job page
+        return redirect('/jobs/' . $job->id);
+    }
+
+    public function destroy(Job $job)
+    {
+        // autorize (On hold...)
+
+        // delete the job
+        // $job = Job::findOrFail($id);
+        // $job->delete();
+
+        // Or we can to
+        // Job::findOrFail($job)->delete();
+        $job->delete();
+
+        // redirect
+        return redirect('/jobs');
+    } -->
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -11,13 +124,13 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -35,19 +148,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 
