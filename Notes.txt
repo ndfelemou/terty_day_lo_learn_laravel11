@@ -1,0 +1,9 @@
+Il y a principalement des choses a savoir sur l'authentication avec les Starters Kits
+
+Form :
+    Registration
+    Log In
+    Forget Password
+    Reset Password
+    Profile
+
